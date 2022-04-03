@@ -16,8 +16,28 @@ class Select
     {
         $connection = new Connection();
         $connect = $connection->Connect();
-        $query = "SELECT * FROM example_table_1 ORDER BY ASC";
+        $query = "SELECT * FROM example_table_1 ORDER BY id ASC";
         $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
+        $connect->close();
+        return $result;
+    }
+
+    public function orderbyDESC()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT * FROM example_table_1 ORDER BY id DESC";
+        $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
         $connect->close();
         return $result;
     }

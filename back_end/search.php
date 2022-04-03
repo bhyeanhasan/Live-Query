@@ -1,21 +1,12 @@
 <?php
-include './back_end/Select.php';
-$select = new Select();
-$table1 = $select->Select_table_1();
-
-if(isset($_GET['sort']))
-{
-    if($_GET['sort']=="asc")
-    {
-        $table1 = $select->orderbyASC();
-    }
-    if($_GET['sort']=="desc")
-    {
-        $table1 = $select->orderbyDESC();
-    }
-}
-
-
+include 'Connection.php';
+$name= $_POST['name'];
+$connection = new Connection();
+$connect = $connection->Connect();
+$query = "SELECT * FROM example_table_1 WHERE name LIKE '%.$name .%'";
+$result = mysqli_query($connect, $query);
+$connect->close();
+return $result;
 ?>
 
 <!doctype html>
@@ -55,9 +46,9 @@ if(isset($_GET['sort']))
                 <tbody>
 
                 <?php
-                if ($table1->num_rows > 0) {
+                if ($result->num_rows > 0) {
                     // output data of each row
-                    while ($row = $table1->fetch_assoc()) {
+                    while ($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
                             <th scope="row"><?php echo $row["id"] ?></th>
@@ -173,5 +164,4 @@ if(isset($_GET['sort']))
         crossorigin="anonymous"></script>
 </body>
 </html>
-
 
