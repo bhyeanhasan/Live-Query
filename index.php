@@ -2,6 +2,16 @@
 include './back_end/Select.php';
 $select = new Select();
 $table1 = $select->Select_table_1();
+
+if(isset($_GET['sort']))
+{
+    if($_GET['sort']=="ASC")
+    {
+        $table1 = $select->orderbyASC();
+    }
+}
+
+
 ?>
 
 <!doctype html>
@@ -113,6 +123,18 @@ $table1 = $select->Select_table_1();
                             <input class="form-control my-1" type="text" name="id" placeholder="ID">
                             <input class="form-control my-1" type="submit">
                         </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sort my-2">
+                <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+                    Sort Ascending
+                </button>
+                <div class="collapse" id="collapseExample4">
+                    <div class="card card-body">
+                        <a href="index.php?sort=asc">ASC</a>
                     </div>
                 </div>
             </div>

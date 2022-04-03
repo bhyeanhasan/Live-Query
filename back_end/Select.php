@@ -12,6 +12,16 @@ class Select
         return $result;
     }
 
+    public function orderbyASC()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT * FROM example_table_1 ORDER BY ASC";
+        $result = mysqli_query($connect,$query);
+        $connect->close();
+        return $result;
+    }
+
 }
 ?>
 
