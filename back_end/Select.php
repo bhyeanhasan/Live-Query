@@ -53,6 +53,16 @@ class Select
         return $result;
     }
 
+    public function search($key)
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT * FROM example_table_1 WHERE name like '%".$key."%'";
+        $result = mysqli_query($connect,$query);
+        $connect->close();
+        return $result;
+    }
+
     public function orderbyASC()
     {
         $connection = new Connection();

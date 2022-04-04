@@ -219,6 +219,10 @@ if (isset($_GET['join'])) {
     </div>
 </div>
 
+<div style="margin-top: 100px">
+
+</div>
+
 <?php include 'front_end/footer.php'?>
 
 <!--JS File-->

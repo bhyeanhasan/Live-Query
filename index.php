@@ -15,6 +15,12 @@ if(isset($_GET['sort']))
     }
 }
 
+if(isset($_POST['search']))
+{
+    $key = $_POST['search'];
+    $table1 = $select->search($key);
+}
+
 ?>
 
 <!doctype html>
@@ -111,7 +117,7 @@ if(isset($_GET['sort']))
         <div class="col-md-2">
 
             <div class="insert my-2 profile-box">
-                <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
                     Insert Data
                 </button>
@@ -122,14 +128,14 @@ if(isset($_GET['sort']))
                             <input class="form-control my-1" type="text" name="reg" placeholder="Registration">
                             <input class="form-control my-1" type="text" name="name" placeholder="Name">
                             <input class="form-control my-1" type="text" name="email" placeholder="Email">
-                            <input class="form-control my-1" type="submit">
+                            <input class="form-control my-1 btn btn-warning" type="submit">
                         </form>
                     </div>
                 </div>
             </div>
 
             <div class="update my-2 profile-box">
-                <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
                     Update Data
                 </button>
@@ -140,14 +146,14 @@ if(isset($_GET['sort']))
                             <input class="form-control my-1" type="text" name="reg" placeholder="Registration">
                             <input class="form-control my-1" type="text" name="name" placeholder="Name">
                             <input class="form-control my-1" type="text" name="email" placeholder="Email">
-                            <input class="form-control my-1" type="submit">
+                            <input class="form-control my-1 btn btn-warning" type="submit">
                         </form>
                     </div>
                 </div>
             </div>
 
             <div class="delete my-2 profile-box">
-                <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
                     Delete Data
                 </button>
@@ -155,35 +161,35 @@ if(isset($_GET['sort']))
                     <div class="card card-body">
                         <form action="back_end/delete_table_1.php" method="post">
                             <input class="form-control my-1" type="text" name="id" placeholder="ID">
-                            <input class="form-control my-1" type="submit">
+                            <input class="form-control my-1 btn btn-warning" type="submit">
                         </form>
                     </div>
                 </div>
             </div>
 
             <div class="sort my-2 profile-box">
-                <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
                     Order By
                 </button>
                 <div class="collapse" id="collapseExample4">
                     <div class="card card-body">
-                        <a href="index.php?sort=asc">Ascending</a>
-                        <a href="index.php?sort=desc">Descending</a>
+                        <a class="btn  btn-warning my-1" href="index.php?sort=asc">Ascending</a>
+                        <a class="btn  btn-warning my-1" href="index.php?sort=desc">Descending</a>
                     </div>
                 </div>
             </div>
 
             <div class="sort my-2 profile-box">
-                <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
                     Search
                 </button>
                 <div class="collapse" id="collapseExample5">
                     <div class="card card-body">
-                        <form action="back_end/search.php" method="post">
-                            <input class="form-control my-1" type="text" name="name" placeholder="Keyword">
-                            <input class="form-control my-1" type="submit" value="Search">
+                        <form action="index.php" method="post">
+                            <input class="form-control my-1" type="text" name="search" placeholder="Keyword">
+                            <input class="form-control my-1 btn btn-warning" type="submit" value="Search">
                         </form>
                     </div>
                 </div>
@@ -191,6 +197,10 @@ if(isset($_GET['sort']))
 
         </div>
     </div>
+</div>
+
+<div style="margin-top: 100px">
+
 </div>
 
 <?php include 'front_end/footer.php'?>
