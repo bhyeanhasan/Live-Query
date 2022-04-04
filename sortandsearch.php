@@ -2,23 +2,23 @@
 include './back_end/Select.php';
 $select = new Select();
 $table1 = $select->Select_table_1();
-$table2 = $select->Select_table_2();
-$table3 = null;
-$operation=null;
 
-if (isset($_GET['join'])) {
-    if ($_GET['join'] == "inner") {
-        $table3 = $select->inner_join();
-        $operation = "After INNER JOIN";
+if(isset($_GET['sort']))
+{
+    if($_GET['sort']=="asc")
+    {
+        $table1 = $select->orderbyASC();
     }
-    if ($_GET['join'] == "left") {
-        $table3 = $select->left_join();
-        $operation = "After LEFT JOIN";
+    if($_GET['sort']=="desc")
+    {
+        $table1 = $select->orderbyDESC();
     }
-    if ($_GET['join'] == "right") {
-        $table3 = $select->right_join();
-        $operation = "After RIGHT JOIN";
-    }
+}
+
+if(isset($_POST['search']))
+{
+    $key = $_POST['search'];
+    $table1 = $select->search($key);
 }
 
 ?>
@@ -40,8 +40,7 @@ if (isset($_GET['join'])) {
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-light menu">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
-                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="index.php">Live Query</a>
@@ -88,7 +87,9 @@ if (isset($_GET['join'])) {
 
         </div>
 
-        <div class="col-md-5 mt-2">
+
+
+        <div class="col-md-8 mt-2">
             <table class="table table-danger table-striped profile-box">
                 <thead>
                 <tr>
@@ -124,109 +125,37 @@ if (isset($_GET['join'])) {
             </table>
         </div>
 
-        <div class="col-md-3 mt-2">
-            <table class="table table-danger table-striped profile-box">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">CGPA</th>
-                    <th scope="col">Total Credits</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <?php
-                if ($table2->num_rows > 0) {
-                    // output data of each row
-                    while ($row2 = $table2->fetch_assoc()) {
-                        ?>
-                        <tr>
-                            <th scope="row"><?php echo $row2["id"] ?></th>
-                            <td><?php echo $row2["cgpa"] ?></td>
-                            <td><?php echo $row2["total_credit"] ?></td>
-                        </tr>
-
-                        <?php
-                    }
-                } else {
-                    echo "0 results";
-                }
-                ?>
-
-
-                </tbody>
-            </table>
-        </div>
-
         <div class="col-md-2">
 
-            <div class="my-2 profile-box">
-                <a href="join.php?join=inner" class="form-control btn btn-primary" type="button""> INNER JOIN </a>
+            <div class="sort my-2 profile-box">
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+                    Order By
+                </button>
+                <div class="collapse" id="collapseExample4">
+                    <div class="card card-body">
+                        <a class="btn  btn-warning my-1" href="sortandsearch.php?sort=asc">Ascending</a>
+                        <a class="btn  btn-warning my-1" href="sortandsearch.php?sort=desc">Descending</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="my-2 profile-box">
-                <a href="join.php?join=left" class="form-control btn btn-primary" type="button""> LEFT JOIN </a>
-            </div>
-
-            <div class="my-2 profile-box">
-                <a href="join.php?join=right" class="form-control btn btn-primary" type="button""> RIGHT JOIN </a>
+            <div class="sort my-2 profile-box">
+                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
+                    Search
+                </button>
+                <div class="collapse" id="collapseExample5">
+                    <div class="card card-body">
+                        <form action="sortandsearch.php" method="post">
+                            <input class="form-control my-1" type="text" name="search" placeholder="Keyword">
+                            <input class="form-control my-1 btn btn-warning" type="submit" value="Search">
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-3"></div>
-
-        <?php if ($table3){ ?>
-
-        <div class="col-md-6 mt-2">
-            <h2 class="text-center"><?php echo $operation?></h2>
-            <hr>
-            <table class="table table-danger table-striped profile-box">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Reg. No.</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">CGPA</th>
-                    <th scope="col">Credits</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <?php
-
-                if ($table3->num_rows > 0) {
-                    // output data of each row
-                    while ($row3 = $table3->fetch_assoc()) {
-                        ?>
-                        <tr>
-                            <th scope="row"><?php if ($row3["id"]) echo $row3["id"]; else echo "NULL" ?></th>
-                            <td><?php if ($row3["reg"]) echo $row3["reg"]; else echo "NULL" ?></td>
-                            <td><?php if ($row3["name"]) echo $row3["name"]; else echo "NULL" ?></td>
-                            <td><?php if ($row3["email"]) echo $row3["email"]; else echo "NULL" ?></td>
-                            <td><?php if ($row3["cgpa"]) echo $row3["cgpa"]; else echo "NULL" ?></td>
-                            <td><?php if ($row3["total_credit"]) echo $row3["total_credit"]; else echo "NULL" ?></td>
-                        </tr>
-
-                        <?php
-                    }
-                } else {
-                    echo "0 results";
-                }
-                }
-                ?>
-
-
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-md-3"></div>
     </div>
 </div>
 
@@ -235,6 +164,7 @@ if (isset($_GET['join'])) {
 </div>
 
 <?php include 'front_end/footer.php'?>
+
 
 <!--JS File-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

@@ -93,6 +93,81 @@ class Select
         return $result;
     }
 
+    public function maxcgpa()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT 0 as id ,0 as total_credit,  MAX(cgpa) as cgpa FROM example_table_2";
+        $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
+        $connect->close();
+        return $result;
+    }
+
+    public function mincpa()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT 0 as id ,0 as total_credit,  MIN(cgpa) as cgpa FROM example_table_2";
+        $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
+        $connect->close();
+        return $result;
+    }
+
+    public function sumcgpa()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT 0 as id ,0 as total_credit,  SUM(cgpa) as cgpa FROM example_table_2";
+        $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
+        $connect->close();
+        return $result;
+    }
+
+    public function avgcgpa()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT 0 as id ,0 as total_credit,  AVG(cgpa) as cgpa FROM example_table_2";
+        $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
+        $connect->close();
+        return $result;
+    }
+
+    public function countid()
+    {
+        $connection = new Connection();
+        $connect = $connection->Connect();
+        $query = "SELECT 0 as cgpa ,0 as total_credit,  COUNT(id) as id FROM example_table_2";
+        $result = mysqli_query($connect,$query);
+        if ($result) {
+
+        } else {
+            echo "Error" . $connect->error;
+        }
+        $connect->close();
+        return $result;
+    }
+
 }
 ?>
 

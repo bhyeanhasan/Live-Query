@@ -3,20 +3,16 @@ include './back_end/Select.php';
 $select = new Select();
 $table1 = $select->Select_table_1();
 
-if(isset($_GET['sort']))
-{
-    if($_GET['sort']=="asc")
-    {
+if (isset($_GET['sort'])) {
+    if ($_GET['sort'] == "asc") {
         $table1 = $select->orderbyASC();
     }
-    if($_GET['sort']=="desc")
-    {
+    if ($_GET['sort'] == "desc") {
         $table1 = $select->orderbyDESC();
     }
 }
 
-if(isset($_POST['search']))
-{
+if (isset($_POST['search'])) {
     $key = $_POST['search'];
     $table1 = $select->search($key);
 }
@@ -40,7 +36,8 @@ if(isset($_POST['search']))
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-light menu">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="index.php">Live Query</a>
@@ -64,17 +61,32 @@ if(isset($_POST['search']))
 
 <div class="container-fluid mt-4">
     <div class="row">
+
+        <!--    left menu           -->
+
         <div class="col-md-2">
 
-            <div class="my-2 profile-box">
-                <a href="index.php" class="form-control btn btn-success" type="button""> Basic Queries </a>
+            <div class="my-3 profile-box">
+                <a href="index.php" class="form-control btn btn-success p-3" type="button""> CRUD Queries </a>
             </div>
 
-            <div class="my-2 profile-box">
-                <a href="join.php" class="form-control btn btn-success" type="button""> Join Table </a>
+            <div class="my-3 profile-box">
+                <a href="aggregate.php" class="form-control btn btn-success p-3" type="button""> Aggregate
+                Functions </a>
             </div>
+
+            <div class="my-3 profile-box">
+                <a href="sortandsearch.php" class="form-control btn btn-success p-3" type="button""> Sort & Search </a>
+            </div>
+
+            <div class="my-3 profile-box">
+                <a href="join.php" class="form-control btn btn-success p-3" type="button""> Join Table </a>
+            </div>
+
 
         </div>
+
+        <!--     end left menu       -->
 
 
 
@@ -167,34 +179,6 @@ if(isset($_POST['search']))
                 </div>
             </div>
 
-            <div class="sort my-2 profile-box">
-                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-                    Order By
-                </button>
-                <div class="collapse" id="collapseExample4">
-                    <div class="card card-body">
-                        <a class="btn  btn-warning my-1" href="index.php?sort=asc">Ascending</a>
-                        <a class="btn  btn-warning my-1" href="index.php?sort=desc">Descending</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sort my-2 profile-box">
-                <button class=" form-control btn btn-danger" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
-                    Search
-                </button>
-                <div class="collapse" id="collapseExample5">
-                    <div class="card card-body">
-                        <form action="index.php" method="post">
-                            <input class="form-control my-1" type="text" name="search" placeholder="Keyword">
-                            <input class="form-control my-1 btn btn-warning" type="submit" value="Search">
-                        </form>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -203,7 +187,7 @@ if(isset($_POST['search']))
 
 </div>
 
-<?php include 'front_end/footer.php'?>
+<?php include 'front_end/footer.php' ?>
 
 
 <!--JS File-->
