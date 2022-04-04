@@ -15,7 +15,6 @@ if(isset($_GET['sort']))
     }
 }
 
-
 ?>
 
 <!doctype html>
@@ -28,22 +27,53 @@ if(isset($_GET['sort']))
     <title>Live Query</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
 
-<div class="container">
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-light menu">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.php">Live Query</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!--end navbar-->
+
+<div class="container-fluid mt-4">
     <div class="row">
-        <div class="col-md-1">
-            <nav class="nav flex-column">
-                <a class="nav-link " href="#">Active</a>
-                <a class="nav-link" href="#">Link</a>
-                <a class="nav-link" href="#">Link</a>
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </nav>
+        <div class="col-md-2">
+
+            <div class="my-2 profile-box">
+                <a href="index.php" class="form-control btn btn-success" type="button""> Basic Queries </a>
+            </div>
+
+            <div class="my-2 profile-box">
+                <a href="join.php" class="form-control btn btn-success" type="button""> Join Table </a>
+            </div>
+
         </div>
 
-        <div class="col-md-8">
-            <table class="table table-danger table-striped">
+
+
+        <div class="col-md-8 mt-2">
+            <table class="table table-danger table-striped profile-box">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -78,9 +108,9 @@ if(isset($_GET['sort']))
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
 
-            <div class="insert my-2">
+            <div class="insert my-2 profile-box">
                 <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
                     Insert Data
@@ -98,7 +128,7 @@ if(isset($_GET['sort']))
                 </div>
             </div>
 
-            <div class="update my-2">
+            <div class="update my-2 profile-box">
                 <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
                     Update Data
@@ -116,7 +146,7 @@ if(isset($_GET['sort']))
                 </div>
             </div>
 
-            <div class="delete my-2">
+            <div class="delete my-2 profile-box">
                 <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
                     Delete Data
@@ -131,7 +161,7 @@ if(isset($_GET['sort']))
                 </div>
             </div>
 
-            <div class="sort my-2">
+            <div class="sort my-2 profile-box">
                 <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
                     Order By
@@ -144,7 +174,7 @@ if(isset($_GET['sort']))
                 </div>
             </div>
 
-            <div class="sort my-2">
+            <div class="sort my-2 profile-box">
                 <button class=" form-control btn btn-primary" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
                     Search
@@ -162,6 +192,8 @@ if(isset($_GET['sort']))
         </div>
     </div>
 </div>
+
+<?php include 'front_end/footer.php'?>
 
 
 <!--JS File-->
