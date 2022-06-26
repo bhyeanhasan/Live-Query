@@ -7,9 +7,9 @@
             <div class="col-md-3 mb-1">
             </div>
             <div class="col-md-6 mb-1">
-                <h5 style="color:white;">© NOYON, 2022 </h5>
+                <h5 style="color:white;">© NOYON & TARIT, 2022 </h5>
                 <span style="color: white">Developed by:</span>
-                <a href="https://bhyeanhasan.github.io/">Md. Babul Hasan (NoYoN)</a>
+                <a href="https://bhyeanhasan.github.io/">Md. Babul Hasan (NoYoN) & Shahriar Tarit</a>
             </div>
 
             <div class="col-md-3">
